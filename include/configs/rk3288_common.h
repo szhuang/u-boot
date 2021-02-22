@@ -63,9 +63,9 @@
 
 /* usb host support */
 #define ENV_MEM_LAYOUT_SETTINGS \
-	"scriptaddr=0x00000000\0" \
-	"pxefile_addr_r=0x00100000\0" \
-	"fdt_addr_r=0x08300000\0" \
+	"scriptaddr=0x00500000\0" \
+	"pxefile_addr_r=0x00600000\0" \
+	"fdt_addr_r=0x05600000\0" \
 	"kernel_addr_r=0x02008000\0" \
 	"ramdisk_addr_r=0x0a200000\0"
 

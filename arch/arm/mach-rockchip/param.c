@@ -82,11 +82,8 @@ struct memblock param_parse_atf_mem(void)
 
 	/* Legacy */
 	if (!mem.size) {
-		if (IS_ENABLED(CONFIG_ARM64) ||
-		    IS_ENABLED(CONFIG_ARM64_BOOT_AARCH32)) {
 			mem.base = SDRAM_OFFSET(0);
-			mem.size = SZ_1M;
-		}
+			mem.size = SZ_2M;
 	}
 
 	debug("ATF: 0x%llx - 0x%llx\n", (u64)mem.base, (u64)mem.base + mem.size);
