@@ -169,7 +169,6 @@ config ROCKCHIP_RK3288
 	imply TPL_SERIAL_SUPPORT
 	select GICV2
 	select ARM_SMCCC
-	select SPL_OPTEE
 	select FIT
 	select SPL_LOAD_FIT
 	select TPL_LIBCOMMON_SUPPORT
