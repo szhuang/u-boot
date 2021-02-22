@@ -306,31 +306,31 @@ void do_irq(struct pt_regs *pt_regs)
 
 int arch_interrupt_init(void)
 {
-#ifndef CONFIG_ARM64
-	unsigned long cpsr __maybe_unused;
-
-	/* stack has been reserved in: arch_reserve_stacks() */
-	IRQ_STACK_START = gd->irq_sp;
-	IRQ_STACK_START_IN = gd->irq_sp;
-
-	__asm__ __volatile__("mrs %0, cpsr\n"
-			     : "=r" (cpsr)
-			     :
-			     : "memory");
-
-	__asm__ __volatile__("msr cpsr_c, %0\n"
-			     "mov sp, %1\n"
-			     :
-			     : "r" (IRQ_MODE | I_BIT |
-				    F_BIT | (cpsr & ~FIQ_MODE)),
-			       "r" (IRQ_STACK_START)
-			     : "memory");
-
-	__asm__ __volatile__("msr cpsr_c, %0"
-			     :
-			     : "r" (cpsr)
-			     : "memory");
-#endif
+//#ifndef CONFIG_ARM64
+//	unsigned long cpsr __maybe_unused;
+//
+//	/* stack has been reserved in: arch_reserve_stacks() */
+//	IRQ_STACK_START = gd->irq_sp;
+//	IRQ_STACK_START_IN = gd->irq_sp;
+//
+//	__asm__ __volatile__("mrs %0, cpsr\n"
+//			     : "=r" (cpsr)
+//			     :
+//			     : "memory");
+//
+//	__asm__ __volatile__("msr cpsr_c, %0\n"
+//			     "mov sp, %1\n"
+//			     :
+//			     : "r" (IRQ_MODE | I_BIT |
+//				    F_BIT | (cpsr & ~FIQ_MODE)),
+//			       "r" (IRQ_STACK_START)
+//			     : "memory");
+//
+//	__asm__ __volatile__("msr cpsr_c, %0"
+//			     :
+//			     : "r" (cpsr)
+//			     : "memory");
+//#endif
 	return __do_arch_irq_init();
 }
 
